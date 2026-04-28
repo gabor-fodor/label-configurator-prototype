@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Premium | Industriegeräte-Konfigurator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Main Configurator -->
+      <div class="config-panel">
+        <header class="bento-card full-width header-card">
+          <div>
+            <div class="step-badge" id="step-badge">Schritt 1 von 7</div>
+            <h1 id="step-title">Schritt 1: Wählen Sie das Format aus</h1>
+            <p id="step-desc">Wählen Sie die Form und Größe aus, die am besten zu Ihrem Produkt passt.</p>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress"></div>
+            </div>
+            <span class="progress-text" id="progress-text">0% abgeschlossen</span>
+          </div>
+        </header>
+
+        <!-- Step 0: Intro / Splash -->
+        <div id="step-0" class="step-container active">
+          <section class="bento-card full-width hero-card">
+            <div class="hero-content">
+              <div class="hero-graphic-container">
+                <svg class="hero-graphic" viewBox="0 0 200 120" fill="none" stroke="currentColor" stroke-width="1.2">
+                  <g class="floating-parts">
+                    <circle cx="40" cy="30" r="12" class="part-1" />
+                    <rect x="30" y="70" width="20" height="20" rx="4" class="part-2" />
+                    <path d="M160 30l15 15-15 15-15-15z" class="part-3" />
+                  </g>
+                  <path d="M70 40c20 0 40 20 60 20" stroke-dasharray="4 4" opacity="0.3" />
+                  <path d="M130 80c-20 0-40-20-60-20" stroke-dasharray="4 4" opacity="0.3" />
+                  <rect x="70" y="40" width="60" height="40" rx="2" stroke-width="2" />
+                  <path d="M80 52h30M80 60h20M80 68h25" />
+                  <path d="M135 35l10-10 4 4-10 10z" />
+                </svg>
+              </div>
+              <h1>Preisauszeichnungsetiketten individuell konfigurieren</h1>
+              <p>Starten Sie jetzt Ihren persönlichen Konfigurationsprozess für hochwertige Industriegeräte und Etikettenlösungen.</p>
+              <button class="btn-hero" id="btn-start">
+                <span>Konfiguration starten</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <!-- Step 1: Formats & Sizes -->
+        <div id="step-1" class="step-container">
+          <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">Alle Formen</button>
+            <button class="filter-btn" data-filter="rect">Rechteckig</button>
+            <button class="filter-btn" data-filter="round">Rund</button>
+            <button class="filter-btn" data-filter="special">Sonderwellenrand</button>
+          </div>
+          <div class="format-grid-wrapper">
+            <div id="format-grid" class="format-grid"></div>
+          </div>
+        </div>
+
+        <!-- Step 2: Stock vs Custom -->
+        <div id="step-2" class="step-container">
+          <section class="bento-card full-width">
+            <h2>Schritt 2: Möchten Sie ein Lageretikett oder ein individuelles Etikett?</h2>
+            <div class="label-type-options">
+              <button class="btn-label-type" onclick="selectLabelType('stock')">
+                <div class="label-type-icon">
+                  <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Standard Label -->
+                    <rect x="2" y="6" width="20" height="12" />
+                    <!-- Barcode lines - fewer and more spaced out -->
+                    <path d="M5 9v6M8 9v6M11 9v6M14 9v6" />
+                    <!-- S in Circle - larger -->
+                    <circle cx="18" cy="12" r="3.5" fill="white" />
+                    <circle cx="18" cy="12" r="3.5" />
+                    <path d="M19 11.2a1.5 1.5 0 0 0-2 0c0 .8 2 .8 2 1.6a1.5 1.5 0 0 1-2 0" />
+                  </svg>
+                </div>
+                <span>Lager Etikett</span>
+              </button>
+              <button class="btn-label-type" onclick="selectLabelType('custom')">
+                <div class="label-type-icon">
+                  <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Custom Label with distinct rounded corner -->
+                    <path d="M2 6h15a5 5 0 0 1 5 5v7H2V6z" />
+                    <!-- Stylized Pencil - larger and clearer -->
+                    <path d="M16 14l4-4" />
+                    <path d="M19 9l2 2" />
+                    <!-- Gear - simpler -->
+                    <circle cx="10" cy="12" r="2.5" />
+                    <path d="M10 8.5v1M10 14.5v1M6.5 12h1M13.5 12h1" />
+                  </svg>
+                </div>
+                <span>individuelles Etikett</span>
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <!-- Step 3: Paper Color -->
+        <div id="step-3" class="step-container">
+          <section class="bento-card full-width">
+            <h2>Schritt 3: Wählen Sie die Farbe des Papiers aus</h2>
+            <div id="color-grid" class="color-grid"></div>
+          </section>
+        </div>
+
+        <!-- Step 4: Printing Lines -->
+        <div id="step-4" class="step-container">
+          <section class="bento-card full-width">
+            <h2>Schritt 4: Wie viele Druckzeilen benötigen Sie in Ihrem Gerät?</h2>
+            <p>Wie viele Zeilen an Informationen müssen Sie drucken?</p>
+            <div class="lines-options">
+              <button class="btn-line" onclick="selectLines(1)">
+                <span class="line-num">1</span>
+                <span class="line-label">1-zeilig</span>
+              </button>
+              <button class="btn-line" onclick="selectLines(2)">
+                <span class="line-num">2</span>
+                <span class="line-label">2-zeilig</span>
+              </button>
+              <button class="btn-line" onclick="selectLines(3)">
+                <span class="line-num">3</span>
+                <span class="line-label">3-zeilig</span>
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <!-- Step 5: Product Results -->
+        <div id="step-5" class="step-container">
+          <div class="results-instruction">
+            <p>Für eine Anfrage wählen Sie die gewünschten Produkte über die Checkboxen aus und klicken Sie auf Anfrage stellen.</p>
+          </div>
+          <div id="product-results" class="product-grid">
+            <!-- Dynamic Product Cards -->
+          </div>
+        </div>
+
+        <!-- Step 6: Inquiry Form -->
+        <div id="step-6" class="step-container">
+          <section class="bento-card full-width form-section">
+            <div class="selected-articles-info">
+              <p>Anfrage für folgende Produkte (zuvor ausgewählt):</p>
+              <div id="inquiry-articles-list" class="articles-badge-list"></div>
+            </div>
+            <form id="inquiry-form" class="inquiry-grid">
+              <div class="form-group">
+                <label>Name, Vorname</label>
+                <input type="text" placeholder="Ihre Antwort" required>
+              </div>
+              <div class="form-group">
+                <label>E-Mail</label>
+                <input type="email" placeholder="Ihre Antwort" required>
+              </div>
+              <div class="form-group">
+                <label>Firma</label>
+                <input type="text" placeholder="Ihre Antwort">
+              </div>
+              <div class="form-group">
+                <label>Telefonnummer</label>
+                <input type="tel" placeholder="Ihre Antwort">
+              </div>
+              <div class="form-group full-width">
+                <label>Straße & Nummer</label>
+                <input type="text" placeholder="Ihre Antwort">
+              </div>
+              <div class="form-group">
+                <label>PLZ</label>
+                <input type="text" placeholder="Ihre Antwort">
+              </div>
+              <div class="form-group">
+                <label>Ort</label>
+                <input type="text" placeholder="Ihre Antwort">
+              </div>
+              <div class="form-group full-width">
+                <label>Land</label>
+                <input type="text" placeholder="Ihre Antwort">
+              </div>
+              <div class="form-group full-width">
+                <label>Bemerkung</label>
+                <textarea rows="4" placeholder="Ihre Antwort"></textarea>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <!-- Step 7: Success & Contact Selection -->
+        <div id="step-7" class="step-container">
+          <section class="bento-card full-width success-section">
+            <div class="contact-selection-content">
+              <h2>Bitte wählen Sie Ihren Ansprechpartner für die weitere Betreuung aus</h2>
+              <div class="contact-action-box">
+                <p class="small-info">Keine weitere Betreuung gewünscht</p>
+                <button class="btn-red-action" onclick="finishConfigurator()">Auswählen</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <footer class="bento-card full-width footer-card">
+          <div class="footer-actions">
+            <button class="btn-secondary" id="btn-back" onclick="prevStep()" disabled>Zurück</button>
+            <button class="btn-primary" id="btn-next" onclick="nextStep()">Nächster Schritt</button>
+            <button class="btn-primary" id="btn-inquiry" style="display: none;" onclick="nextStep()" disabled>Anfrage stellen</button>
+            <button class="btn-primary" id="btn-submit-final" style="display: none;" onclick="submitForm()">Absenden</button>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
