@@ -271,15 +271,20 @@ body { background: var(--bg-color); color: var(--text-primary); min-height: 100v
   gap: 0.5rem;
 }
 
-.btn-line .line-num {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--primary-color);
+.btn-line .line-icon {
+  color: #94a3b8;
+  transition: var(--transition);
+}
+
+.btn-line:hover .line-icon {
+  color: var(--accent-color);
 }
 
 .btn-line .line-label {
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  margin-top: 0.5rem;
 }
 
 .btn-line.active {
