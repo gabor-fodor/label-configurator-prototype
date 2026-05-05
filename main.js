@@ -15,9 +15,9 @@ const formats = [
 ];
 
 const mockProducts = [
-  { id: 'A21000618', name: 'premium 6.18', price: 119.98, image: './handauszeichner/premium_12_22_G.png', buyable: true, buyUrl: 'https://www.contact-online.de/produkt/contact-etiketten-fuer-handauszeichner-26x16mm-wellenrand/' },
-  { id: 'A21000718', name: 'premium 7.18', price: 129.95, image: './handauszeichner/premium_12_22_G.png', buyable: false },
-  { id: 'A21000818', name: 'premium 8.18', price: 139.50, image: './handauszeichner/premium_12_22_G.png', buyable: true, buyUrl: 'https://www.contact-online.de/produkt/contact-etiketten-fuer-handauszeichner-26x16mm-wellenrand/' }
+  { id: 'A21000618', name: 'premium 6.18', price: 119.98, image: 'https://www.contact-online.de/handauszeichner/premium_8_22_DT_G.png', buyable: true, buyUrl: 'https://www.contact-online.de/produkt/contact-etiketten-fuer-handauszeichner-26x16mm-wellenrand/' },
+  { id: 'A21000718', name: 'premium 7.18', price: 129.95, image: 'https://www.contact-online.de/handauszeichner/premium_8_22_DT_G.png', buyable: false },
+  { id: 'A21000818', name: 'premium 8.18', price: 139.50, image: 'https://www.contact-online.de/handauszeichner/premium_8_22_DT_G.png', buyable: true, buyUrl: 'https://www.contact-online.de/produkt/contact-etiketten-fuer-handauszeichner-26x16mm-wellenrand/' }
 ];
 
 const paperColors = [
