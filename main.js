@@ -15,9 +15,9 @@ const formats = [
 ];
 
 const mockProducts = [
-  { id: 'A21000618', name: 'premium 6.18', price: 119.98, image: './handauszeichner/premium_12_22_G.png' },
-  { id: 'A21000718', name: 'premium 7.18', price: 129.95, image: './handauszeichner/premium_12_22_G.png' },
-  { id: 'A21000818', name: 'premium 8.18', price: 139.50, image: './handauszeichner/premium_12_22_G.png' }
+  { id: 'A21000618', name: 'premium 6.18', price: 119.98, image: './handauszeichner/premium_12_22_G.png', buyable: true, buyUrl: 'https://www.contact-online.de/produkt/contact-etiketten-fuer-handauszeichner-26x16mm-wellenrand/' },
+  { id: 'A21000718', name: 'premium 7.18', price: 129.95, image: './handauszeichner/premium_12_22_G.png', buyable: false },
+  { id: 'A21000818', name: 'premium 8.18', price: 139.50, image: './handauszeichner/premium_12_22_G.png', buyable: true, buyUrl: 'https://www.contact-online.de/produkt/contact-etiketten-fuer-handauszeichner-26x16mm-wellenrand/' }
 ];
 
 const paperColors = [
@@ -40,7 +40,7 @@ const paperColors = [
 ];
 
 let state = {
-  currentStep: 0,
+  currentStep: 1,
   selectedFormat: formats[1],
   labelType: 'stock',
   selectedColor: paperColors[0],
@@ -119,6 +119,7 @@ function renderProducts() {
           <tr><td>Druckzeilen:</td><td>${state.lines}</td></tr>
           <tr><td>Artikelnummer:</td><td>${p.id}</td></tr>
         </table>
+        ${p.buyable ? `<div class="product-buy-action"><a href="${p.buyUrl}" target="_blank" class="btn-buy-product" onclick="event.stopPropagation()">Jetzt im Shop kaufen</a></div>` : ''}
       </div>
     `;
     container.appendChild(card);
@@ -164,7 +165,7 @@ function updateUI() {
     }
 
     // 4. Update Progress
-    const percent = ((state.currentStep) / 6) * 100;
+    const percent = ((state.currentStep - 1) / 5) * 100;
     if (document.getElementById('progress')) {
       document.getElementById('progress').style.width = `${percent}%`;
     }
@@ -190,7 +191,14 @@ function updateUI() {
   const btnInquiry = document.getElementById('btn-inquiry');
   const btnSubmitFinal = document.getElementById('btn-submit-final');
 
-  if (btnBack) btnBack.disabled = state.currentStep === 1;
+  if (btnBack) {
+    if (state.currentStep === 1) {
+      btnBack.style.display = 'none';
+    } else {
+      btnBack.style.display = 'block';
+      btnBack.disabled = false;
+    }
+  }
 
   if (state.currentStep >= 1 && state.currentStep <= 4) {
     if (btnNext) btnNext.style.display = 'block';
@@ -209,7 +217,7 @@ function updateUI() {
 }
 
 window.nextStep = () => { if (state.currentStep < 7) { state.currentStep++; updateUI(); } };
-window.prevStep = () => { if (state.currentStep > 0) { state.currentStep--; updateUI(); } };
+window.prevStep = () => { if (state.currentStep > 1) { state.currentStep--; updateUI(); } };
 
 window.selectLabelType = (type) => { 
   state.labelType = type; 
